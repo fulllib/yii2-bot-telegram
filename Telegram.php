@@ -694,16 +694,16 @@ class Telegram extends \yii\base\Component
      *    ]);
      *
      */
-    public function getFile($option)
+    public function getFile($option): array
     {
         $jsonResponse = $this->curl_call($this->apiEndpoint . "/bot" . $this->botToken . "/getFile", $option);
         return json_decode($jsonResponse);
     }
 
-    private function curl_call($url, $option = array(), $headers = array())
+    private function curl_call($url, $option = array(), $headers = array()): string
     {
         if (!$this->enabled) {
-            return [];
+            return "";
         }
 
         $attachments = ['photo', 'sticker', 'audio', 'document', 'video'];
@@ -740,7 +740,7 @@ class Telegram extends \yii\base\Component
         return $r;
     }
 
-    private function curlFile($path)
+    private function curlFile($path): string
     {
         if (is_array($path))
             return $path['file_id'];
