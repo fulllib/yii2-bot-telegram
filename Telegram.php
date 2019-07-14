@@ -732,7 +732,7 @@ class Telegram extends \yii\base\Component
         $r = curl_exec($ch);
         if ($r == false) {
             $text = 'eroror ' . curl_error($ch);
-            $myfile = fopen("error_telegram.log", "w") or die("Unable to open file!");
+            $myfile = fopen(\Yii::getAlias("@runtime/logs") . "/error_telegram.log", "w") or die("Unable to open file!");
             fwrite($myfile, $text);
             fclose($myfile);
         }
