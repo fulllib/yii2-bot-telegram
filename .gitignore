@@ -13,6 +13,10 @@ nbproject
 # OSX
 # =========================
 
+vendor
+composer.lock
+
+.idea
 .DS_Store
 .AppleDouble
 .LSOverride
