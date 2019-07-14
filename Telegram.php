@@ -7,6 +7,7 @@ class Telegram extends \yii\base\Component
     public $botToken;
     public $botUsername;
     public $apiEndpoint;
+    public $enabled = false;
 
     public function init()
     {
@@ -701,6 +702,10 @@ class Telegram extends \yii\base\Component
 
     private function curl_call($url, $option = array(), $headers = array())
     {
+        if (!$this->enabled) {
+            return [];
+        }
+
         $attachments = ['photo', 'sticker', 'audio', 'document', 'video'];
 
         $ch = curl_init($url);
